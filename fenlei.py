@@ -9,9 +9,6 @@ for encoding in encodings:
         print(f"成功使用编码: {encoding}")
         break
     except UnicodeDecodeError:
-
-
-
         continue
 else:
     raise ValueError("无法找到合适的编码")
