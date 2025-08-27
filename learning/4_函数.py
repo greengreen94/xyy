@@ -1,4 +1,4 @@
-# 函数的定义
+# 函数的定义与调用
 def greet(): # define，greet为函数名
     print("Hi")
     print("Welcome")
