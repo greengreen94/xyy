@@ -22,7 +22,8 @@ message = get_greeting("Feng")
 print(message) # 函数类型2可以在终端上打印
 # file = open("content.txt", "w") # 也可以使用open函数将其写入文件
 # file.write(message)
-print(greet("Feng")) # 默认情况下，所有函数返回None值，即使没有return语句，None是表示没有值的对象
+greet("Feng")
+print(greet("Feng")) # 默认情况下，所有函数返回None值，即使没有return语句（None是表示没有值的对象）
 # 也就是说，函数类型1没有return语句但会返回None值，只不过None没有被打印出来，这里调用print就会被打印出来；函数类型2指定了return值，所以不会返回None值
 
 # 设置可选参数（可选参数在必需参数之后）
@@ -43,7 +44,7 @@ print(multiply(2, 3))
 # multiply(2, 3, 4, 5)报错
 # 元组，星号*
 def multiply(*numbers):
-    print(numbers) # 用括号创建元组，元组是对象的集合，不能修改这个集合
+    print(numbers) # 用括号()创建元组，元组是对象的集合，不能修改这个集合（用方括号[]创建列表）
 multiply(2, 3, 4, 5) # 传递任意参数
 # 元组可迭代
 def multiply(*numbers):
@@ -63,17 +64,17 @@ print(multiply(2, 3, 4, 5))
 def save_user(**user): # 保存用户的信息
     print(user)
 save_user(id=1, name="John", age=22) # 传递任意关键字参数name=value
-# 字典：花括号。多个键值对（键冒号值逗号）
+# 字典：花括号。多个键值对（键冒号，值逗号）
 def save_user(**user):
     print(user["id"]) # 这里id是钥匙的名称，返回钥匙的值
 save_user(id=1, name="John", age=22)
 
 # 局部local变量与全局global变量（scope作用域：变量的代码区域）
 # 局部变量（name和message变量的作用域是greet函数）
-# def greet(name):
-#     message = "a"
-# def send_email(name):
-#     message = "b"
+def greet(name):
+    message = "a"
+def send_email(name):
+    message = "b"
 # print(name) # 报错，没有定义name变量
 # print(message) # 报错，没有定义message变量
 # Python解释器分配内存并让name和message变量引用这些内存位置，执行完greet函数，这些变量在其他任何地方都没有使用，被收集为垃圾，函数运行结束Python解释器将回收内存
