@@ -113,7 +113,7 @@ def fizz_buzz(input):
 def fizz_buzz(input):
     if input % 3 == 0:
         return "Fizz"
-    else: # 当有if语句，在if中返回一个值时，不需要写else
+    else: # 当有if语句，在if中返回一个值时，不需要写else（原因见下面）
         return "Buzz"
 # 再改进
 def fizz_buzz(input):
