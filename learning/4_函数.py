@@ -43,7 +43,7 @@ def multiply(x, y):
 print(multiply(2, 3))
 # multiply(2, 3, 4, 5)报错
 # 元组，星号*
-def multiply(*numbers):
+def multiply(*numbers): # 在参数前加星号*时，获得所有任意参数，并将它们打包到一个元组中
     print(numbers) # 用括号()创建元组，元组是对象的集合，不能修改这个集合（用方括号[]创建列表）
 multiply(2, 3, 4, 5) # 传递任意参数
 # 元组可迭代

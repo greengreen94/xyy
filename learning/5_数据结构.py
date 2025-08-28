@@ -1,37 +1,39 @@
 # 数据结构（列表list，元组tuple，集合，字典dictionary）
 
 # 列表的创建
-# 用方括号[]定义列表，列表中的每个对象都可以是任意类型的
+# 用方括号[]定义列表，列表中的每个成分都可以是任意类型的
 letters = ["a", "b", "c"] # 字符串列表，还有数字列表、布尔值列表
-matrix = [[0, 1], [2, 3]] # 列表的列表，列表的每一项本身都是一个列表（矩阵，二维列表）
-zeros = [0] * 5 # 创建有5个0的列表，[0]是只有一个对象（0）的列表，用星号*重复列表中的项
+matrix = [[0, 1], [2, 3]] # 列表的列表，列表的每个成分本身都是一个列表（矩阵，二维列表）
+zeros = [0] * 5 # 创建有5个0的列表，[0]是只有一个成分（0）的列表，用星号*重复列表中的成分
 combined = zeros + letters # 用加号+连接多个列表
 numbers = list(range(20)) # 创建从0到19的列表，list函数需要可迭代变量，并将其转换为列表；range函数返回range对象
-chars = list("Hello World") # 原始字符串中的每个字符都是列表中的一个项，包括空格
-print(len(chars)) # 使用len函数获得列表中的项目数
+chars = list("Hello World") # 原始字符串中的每个字符都是列表中的一个成分，包括空格
+print(len(chars)) # 使用len函数获得列表中的成分数
 
 # 获取列表中的数据
 letters = ["a", "b", "c", "d"]
-print(letters[0]) # 用方括号获得列表中的每一项，类似字符串
-letters[0] == "A" # 修改列表中的项
-print(letters[0:3]) # 返回一个新列表，其中包含原始列表中的前三项
+print(letters[0]) # 用方括号获得列表中的每个成分，类似字符串
+letters[0] == "A" # 修改列表中的成分
+print(letters[0:3]) # 返回一个新列表，其中包含原始列表中的前三个成分
 print(letters[:3])
-print(letters[::2]) # 返回列表中每x项，此处步长x=2
+print(letters[::2]) # 返回列表中每x个成分，此处步长x=2
 # ::
 numbers = list(range(20))
 print(numbers[::2]) # 得到所有的偶数
-print(numbers[::-1]) # 返回原始列表中的所有项但顺序相反
+print(numbers[::-1]) # 返回原始列表中的所有成分但顺序相反
 
-# 解包列表（取出列表中的数据）
+# 解包列表（把列表解压缩成多个变量，取出列表中的数据）
 numbers = [1, 2, 3]
 first = numbers[0]
 second = numbers[1]
 third = numbers[2]
-first, second, third = numbers # 与上面三行等价，更干净、更优雅
-numbers = [1, 2, 3, 4, 4, 4, 4, 4]
-first, second, *other = numbers
+first, second, third = numbers # 与上面三行等价，解压列表，更干净、更优雅
+# 赋值运算符左侧的变量数应该等于列表中成分个数，否则会报错
+numbers = [1, 2, 3, 4, 4, 4, 4, 4] # 如果列表中成分很多，只需要前2个
+first, second, *other = numbers # 既有解压又有压缩
 print(first)
-print(other)
+print(other) # 返回一个列表，被星号*打包了
+print(*other) # 返回多个成分，被星号*解包了
 numbers = [1, 2, 3, 4, 4, 4, 4, 9]
 first, *other, last = numbers
 print(first, last)
