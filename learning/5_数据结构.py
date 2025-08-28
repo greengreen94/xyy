@@ -10,20 +10,24 @@ numbers = list(range(20)) # 创建从0到19的列表，list函数需要可迭代
 chars = list("Hello World") # 原始字符串中的每个字符都是列表中的一个项，包括空格
 print(len(chars)) # 使用len函数获得列表中的项目数
 
-#
+# 获取列表中的数据
 letters = ["a", "b", "c", "d"]
-print(letters[0]) # 用方括号获得列表中的每一项
+print(letters[0]) # 用方括号获得列表中的每一项，类似字符串
 letters[0] == "A" # 修改列表中的项
-print(letters[0:3])
-print(letters[::2])
-
+print(letters[0:3]) # 返回一个新列表，其中包含原始列表中的前三项
+print(letters[:3])
+print(letters[::2]) # 返回列表中每x项，此处步长x=2
+# ::
 numbers = list(range(20))
-print(numbers[::-1])
+print(numbers[::2]) # 得到所有的偶数
+print(numbers[::-1]) # 返回原始列表中的所有项但顺序相反
+
+# 解包列表（取出列表中的数据）
 numbers = [1, 2, 3]
 first = numbers[0]
 second = numbers[1]
 third = numbers[2]
-first, second, third = numbers
+first, second, third = numbers # 与上面三行等价，更干净、更优雅
 numbers = [1, 2, 3, 4, 4, 4, 4, 4]
 first, second, *other = numbers
 print(first)
