@@ -11,6 +11,7 @@ print("bag" == "BAG")
 print(ord("b")) # 98，字母b的数字表示
 print(ord("B")) # 66，b的ASCII大于B，小写字母和大写字母具有不同的数字表示
 
+# 条件语句if语句
 # 分支结构
 # 单分支结构：if语句
 temperature = 35
@@ -18,10 +19,8 @@ if temperature > 30: # 条件是布尔表达式
     print("It's warm")
     print("Drink water") # 记得一定要缩进，缩进的语句才是if条件为真返回的语句
 print("Done") # 表示if语句的结束，没有缩进，无论条件是真是假都会执行
-
 # 二分支结构：if-else语句
-# 多分支结构：if-elif-else语句
-# 1、多条件
+# 多分支结构：if-elif-else语句（多条件）
 temperature = 15
 if temperature > 30:
     print("It's warm")
@@ -32,7 +31,8 @@ else:
     print("It's cold")
 print("Done")
 
-# 2、二分支&给变量赋值
+# 三元运算符（根据条件给变量赋不同的值，即根据第三个值选择两个值中的一个）
+# 二分支&给变量赋值
 age = 22
 # if age >= 18:
 #     message = "Eligible"
@@ -41,7 +41,7 @@ age = 22
 message = "Eligible" if age >= 18 else "Not eligible" # 与上面四行代码等价，当给变量赋值时
 print(message)
 
-# 3、and,or,not逻辑运算符（not > and > or）
+# and,or,not逻辑运算符（not > and > or）
 high_income = False
 good_credit = True
 student = True
@@ -66,7 +66,7 @@ if (high_income or good_credit) and not student: # 条件：收入高或信用�
 else:
     print("Not eligible")
 
-# 4、链式比较运算符
+# 链式比较运算符
 age = 22
 if 18 <= age < 65: # 等价于if age >= 18 and age < 65:
     print("Eligible")
@@ -124,21 +124,18 @@ number = 100
 while number > 0:
     print(number)
     number //= 2 # number = number // 2
-
-# 2、while循环&用户输入
+# 2、while循环&条件终止
 command = ""
 while command != "quit": # 只有输入小写quit才会终止
     command = input(">") # 从用户那里获得输入
     print("ECHO1", command) # 有空格
-
-# 3、while循环&用户输入
 command = ""
 while command.lower() != "quit": # 只要输入quit无论大小写都会终止
     command = input(">")
     print("ECHO2", command)
 
-# 4、while&break
-# 无限循环及其终止，和上面代码等价
+# 3、while&break
+# 无限循环（条件始终为真）及其终止（和上面代码等价）
 while True:
     command = input(">")
     print("ECHO3", command)

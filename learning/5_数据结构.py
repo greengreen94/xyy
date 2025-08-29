@@ -1,4 +1,4 @@
-# 数据结构（列表list，元组tuple，集合，字典dictionary）
+# 数据结构（列表list[]，元组tuple()，集合，字典dictionary）
 
 # 列表的创建
 # 用方括号[]定义列表，列表中的每个成分都可以是任意类型的
@@ -39,53 +39,106 @@ first, *other, last = numbers # 如果列表中成分很多，只需要第一个
 print(first, last)
 print(other)
 
-# 循环列表
 # 元组
 letters = ["a", "b", "c"]
-for letter in letters:
+for letter in letters: # for循环迭代列表
     print(letter)
 # 获得每个成分的索引（enumerate()函数）
-for letter in enumerate(letters): # enumerate()函数返回enumerate对象，可迭代；每次迭代中，enumerate对象会返回一个元组（元组类似于列表，但是是只读的）
+for letter in enumerate(letters): # enumerate()函数返回可迭代的enumerate对象；在每次迭代中，enumerate对象会返回一个含2项的元组（元组类似于列表，但是是只读的）
     print(letter) # 元组中的第一项是索引，第二项是该索引对应的成分
 for letter in enumerate(letters):
-    print(letter[0], letter[1])
-
-letters = ["a", "b", "c"]
+    print(letter[0]) # 返回索引，letter是元组
+    print(letter[0], letter[1]) # 解包元组，不简洁，letter[1]是每元组的第二项
+# 解包元组
 items = (0, "a")
 index, letter = items
+letters = ["a", "b", "c"]
 for index, letter in enumerate(letters):
     print(index, letter)
 
-letters = ["a", "b", "c"]
+# 向列表中添加新成分+删除现有成分
+letters = ["a", "b", "c", "d", "e"]
 # Add
-letters.append("d")
-letters.insert(0, "-")
+# 在列表末尾添加成分
+letters.append("f")
+print(letters)
+# 在特定位置添加成分
+letters.insert(0, "-") # 列表开头
+print(letters)
+# Python中的一切都是对象，当函数是对象的一部分时，将该函数称为方法，该对象中的方法x.function
 # Remove
+# 删除列表末尾的成分
+letters.pop()
+print(letters)
+# 删除给定索引处的成分，只能删除一个成分
 letters.pop(0)
-letters.remove("b")
+print(letters)
+# 删除某个成分但不知道它的索引
+letters.remove("b") # 删除第一个"b"
+print(letters)
+# 通过索引删除成分，可以删除一个或多个成分
 del letters[0:3]
+print(letters)
+# 删除列表中所有成分
+letters.clear()
+print(letters)
 
+# 在列表中查找给定对象的索引
 letters = ["a", "b", "c"]
-letters.count("d")
-if "d" in letters:
+print(letters.index("a")) # 找到字母a的索引;查找列表中不存在的对象的索引会报错
+if "d" in letters: # 检查给定的对象是否存在于列表中
     print(letters.index("d"))
+print(letters.count("d")) # 返回列表中给定对象的出现次数
 
+# 排序列表
+# 对数字和字符串排序
 numbers = [3, 51, 2, 8, 6]
-numbers.sort(reverse=True)
+numbers.sort() # 升序
+print(numbers)
+numbers.sort(reverse=True) # 降序
+print(numbers)
+print(sorted(numbers)) # 参数为可迭代对象iterable；返回排序的新列表，不会修改原始列表
 print(sorted(numbers, reverse=True))
-
+# 对元组排序
+# 根据商品的价格对列表进行排序
 items = [
     ("Product1", 10),
     ("Product2", 9),
     ("Product3", 12)
 ]
-def sort_item(item):
-    return item[1]
-
-items.sort()
+items.sort() # 此处sort没有作用
+print(items)
+def sort_item(item): # 定义函数用于排序，此处参数item代指列表中的成分——元组
+    return item[1] # 返回价格用于排序
+# 函数的作用是接受一个元组并返回它的价格
+items.sort(key=sort_item) # key参数指定排序依据，sort的第一个参数不是key，所以必须明确指定
+# sort_item：加括号sort_item()表示调用函数，()内需要填入参数否则报错，不加括号sort_item表示引用函数
+# sort()排序时，会对每个成分调用sort_item()函数
 print(items)
 
-price = []
+# lambda函数（重写sort_item函数，更干净）
+# lambda函数：传递给其他函数的简单的一行匿名函数，定义函数的更简洁的方法
+# 何时用：当一个函数作为另一个函数的实参，一次性的
+items = [
+    ("Product1", 10),
+    ("Product2", 9),
+    ("Product3", 12)
+]
+# items.sort(key=lambda parameters: expression) # lambda函数的语法
+items.sort(key=lambda item: item[1])
+print(items)
+
+# map函数
+# 将列表转换成不同的形状
+# 将列表转换成数字列表
+items = [
+    ("Product1", 10),
+    ("Product2", 9),
+    ("Product3", 12)
+]
+prices = []
 for item in items:
-    price.append(item[1])
+    prices.append(item[1])
 print(prices)
+x = map(lambda item: item[1], items) # 等价于上面四行代码
+

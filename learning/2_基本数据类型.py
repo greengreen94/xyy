@@ -1,7 +1,7 @@
 # 变量（将数据存储在计算机内存中）
 # 数据的基本类型：数字、布尔值True/False和字符串（区分大小写）
 
-# 字符串类型
+# 字符串
 course = "Python Programming"
 print(len(course)) # len()字符串的长度，不局限于字符串，长度18，空格也算
 # []访问字符串中的特定字符
@@ -13,8 +13,8 @@ print(course[:3])
 print(course[:])
 print(course[1:-1])
 
-# \转义字符
-# 转义序列：\"表示"，\'表示'，\\表示\，\n表示换行
+# 转义序列
+# \转义字符：\"表示"，\'表示'，\\表示\，\n表示换行
 course = "Python \n Programming"
 print(course)
 
@@ -45,7 +45,7 @@ print(course.replace("py", "j")) # 替换
 print("pro" in course) # 查看字符串是否包含字符序列，返回布尔值
 print("green" not in course)
 
-# 数字类型（整数、浮点数、复数）
+# 数字（整数、浮点数、复数）
 x = 1
 x = 1.1
 x = 1 + 2j # a + bi
