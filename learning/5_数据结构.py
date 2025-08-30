@@ -282,9 +282,16 @@ print(point.get("a")) # 如果key不存在，默认情况下返回None
 print(point.get("a", 0)) # 第二个参数传递自定义的默认值
 del point["x"]
 print(point)
-# 循环字典
-for x in point:
-    print(x)
+# 迭代字典
+for key in point:
+    print(key, point[key])
+for x in point.items():
+    print(x) # 每次迭代得到一个元组，元组中有键和值
+for key, value in point.items():
+    print(key, value)
 
 # 字典推导式
 # 语法：{key: value for item in iterable if condition}
+
+
+
