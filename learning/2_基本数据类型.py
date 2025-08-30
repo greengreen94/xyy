@@ -76,8 +76,9 @@ y = int(x) + 1 # 将字符串转换为数字
 print(f"x: {x}, y:{y}")
 
 # 布尔值True/False（注意大小写）
-# 布尔假：""空字符串、0、None，除了这些其他都是布尔真
+# 布尔假：""空字符串、[]空列表、0、None，除了这些其他都是布尔真
 print(bool(0)) # bool(非零值)均为True
 print(bool(None))
 print(bool(""))
+print(bool([]))
 print(bool("False")) # 非空字符串均为True

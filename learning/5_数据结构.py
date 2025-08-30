@@ -1,4 +1,5 @@
 # 数据结构（列表list[]，元组tuple()，集合，字典dictionary）
+from numpy.ma.core import append
 
 # 列表的创建
 # 用方括号[]定义列表，列表中的每个成分都可以是任意类型的
@@ -6,7 +7,7 @@ letters = ["a", "b", "c"] # 字符串列表，还有数字列表、布尔值列�
 matrix = [[0, 1], [2, 3]] # 列表的列表，列表的每个成分本身都是一个列表（矩阵，二维列表）
 zeros = [0] * 5 # 创建有5个0的列表，[0]是只有一个成分（0）的列表，用星号*重复列表中的成分
 combined = zeros + letters # 用加号+连接多个列表
-numbers = list(range(20)) # 创建从0到19的列表，list()函数需要可迭代变量，并将其转换为列表；range()函数返回range对象
+numbers = list(range(20)) # 创建从0到19的列表，list()函数需要可迭代对象，并将其转换为列表；range()函数返回range对象
 chars = list("Hello World") # 原始字符串中的每个字符都是列表中的一个成分，包括空格
 print(len(chars)) # 使用len()函数获得列表中的成分数
 
@@ -68,7 +69,7 @@ print(letters)
 # Python中的一切都是对象，当函数是对象的一部分时，将该函数称为方法，该对象中的方法x.function
 # Remove
 # 删除列表末尾的成分
-letters.pop()
+letters.pop() # 赋值再打印，会返回被删除的末尾成分
 print(letters)
 # 删除给定索引处的成分，只能删除一个成分
 letters.pop(0)
@@ -124,13 +125,13 @@ items = [
     ("Product2", 9),
     ("Product3", 12)
 ]
-# items.sort(key=lambda parameters: expression) # lambda函数的语法
+# items.sort(key=lambda parameters: expression) # lambda函数的语法，输入parameters返回expression
 items.sort(key=lambda item: item[1])
 print(items)
 
-# map函数
+# map()映射函数（map(function, iterable, ...)：第一个参数是函数，第二个参数是一个或多个可迭代对象）
 # 将列表转换成不同的形状
-# 将列表转换成数字列表
+# 将元组列表转换成数字列表
 items = [
     ("Product1", 10),
     ("Product2", 9),
@@ -140,5 +141,65 @@ prices = []
 for item in items:
     prices.append(item[1])
 print(prices)
-x = map(lambda item: item[1], items) # 等价于上面四行代码
+x = map(lambda item: item[1], items) # 等价于上面四行代码，更简洁
+# map()函数使得items列表中每个成分作为lambda函数的输入，此处lambda函数转换原始列表中的每个成分
+# map()函数返回map对象，map对象可迭代
+for item in x:
+    print(item)
+prices = list(map(lambda item: item[1], items)) # map对象转换为list对象
+print(prices)
+
+# filter()过滤函数（filter(function, iterable)）
+# 过滤列表，价格大于等于10的商品
+items = [
+    ("Product1", 10),
+    ("Product2", 9),
+    ("Product3", 12)
+]
+filtered = []
+for item in items:
+    if item[1] >= 10:
+        # filtered.append(item[0])
+        filtered.append(item)
+print(filtered)
+filtered = list(filter(lambda item: item[1] >= 10, items)) # 等价于上面五行代码，更简洁
+# filter()函数过滤可迭代对象，保留使函数返回True的对象
+# filter()函数返回filter对象，filter对象可迭代
+print(filtered)
+
+# 列表推导式
+# 语法：[expression for item in iterable if condition]
+items = [
+    ("Product1", 10),
+    ("Product2", 9),
+    ("Product3", 12)
+]
+prices = list(map(lambda item: item[1], items))
+prices = [item[1] for item in items]
+filtered = list(filter(lambda item: item[1] >= 10, items))
+filtered = [item for item in items if item[1] >= 10]
+
+# zip()函数
+# 把两个列表组合成一个元组列表
+list1 = [1, 2, 3]
+list2 = [10, 20, 30]
+# [(1, 10), (2, 20), (3, 30)]
+print(list(zip(list1, list2))) # zip()函数返回zip对象，zip对象可迭代
+print(list(zip("abc", list1, list2))) # zip()函数的参数是一个或多个可迭代对象
+
+# 堆栈stacks（数据结构，后进先出last in first out LIFO）
+# 类似于现实生活中的一叠书，浏览器浏览网站
+browsing_session = []
+browsing_session.append(1)
+browsing_session.append(2)
+browsing_session.append(3)
+print(browsing_session)
+last = browsing_session.pop() # 按下后退按钮，删除最后一项
+print(last)
+print(browsing_session)
+print("redirect", browsing_session[-1]) # 重定向到之前的网站，即堆栈顶部的项
+if not browsing_session: # 检查堆栈是否为空，not运算符应用于空列表的值为布尔值True
+    print("disable")
+
+# 队列queues（先进先出）
 
