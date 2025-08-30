@@ -75,7 +75,7 @@ if 18 <= age < 65: # 等价于if age >= 18 and age < 65:
 # for循环（遍历循环，迭代可迭代的对象）
 # 可迭代对象：range、字符串、列表、自定义
 # 1、for语句
-for number in range(3): # number分别是0、1、2，只有1个参数，从0开始到该参数前结束
+for number in range(3): # number是循环变量，number分别是0、1、2，只有1个参数，从0开始到该参数前结束
     print("Attempt", number + 1, (number + 1) * ".")
 for number in range(1, 4): # number分别是1、2、3，从第1个参数开始，到第2个参数前结束，左闭右开
     print("Attempt", number, number * ".")
