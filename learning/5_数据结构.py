@@ -1,4 +1,6 @@
-# 数据结构（列表list[]，元组tuple()，集合set{}，字典dictionary）
+# 数据结构（列表list[]，元组tuple()，集合set{}，字典dictionary{}）
+from sys import getsizeof
+
 from numpy.ma.core import append
 
 # 列表的创建
@@ -269,12 +271,12 @@ print(first ^ second) # 对称差集，并集减去交集
 if 1 in first:
     print("yes")
 
-# 字典dictionary（键值对的集合）
+# 字典dictionary（键值对的集合，也是集合）
 # 将键映射到值，类似于现实生活中的电话簿
 point = {"x": 1, "y": 2} # 键只能是不可变类型（字符串或数字），值可以是任何类型
 point = dict(x=1, y=2)
 point["x"] = 10 # 索引是key的名称
-point["z"] = 20
+point["z"] = 20 # 添加项
 print(point)
 if "a" in point: # 检查key是否存在
     print(point["a"])
@@ -285,13 +287,77 @@ print(point)
 # 迭代字典
 for key in point:
     print(key, point[key])
-for x in point.items():
+for x in point.items(): # 把键值对转换为元组
     print(x) # 每次迭代得到一个元组，元组中有键和值
 for key, value in point.items():
     print(key, value)
 
 # 字典推导式
 # 语法：{key: value for item in iterable if condition}
+# 列表推导式
+values = []
+for x in range(5):
+    values.append(x * 2)
+values = [x * 2 for x in range (5)] # 与上面三行代码等价
+print(values)
+# 没有元组推导式
+# 集合推导式
+values = {x * 2 for x in range(5)}
+print(values)
+# 字典推导式
+values = {} # {}是空字典，不是空集合，创建空集合用set()
+for x in range(5):
+    values[x] = x * 2
+print(values)
+values = {x: x * 2 for x in range(5)}
+print(values)
 
+# 生成器generator（生成器对象可迭代，每次迭代生成一个新值，总共只生成一个值）
+values = [x * 2 for x in range (100000)] # 如果数据集非常大，内存很大很低效
+# for x in values:
+#     print(x)
+print("list:", getsizeof(values))
+# 生成器表达式的语法： (expression for item in iterable if condition)
+from sys import getsizeof
+values = (x * 2 for x in range(100000))
+# for x in values:
+#     print(x) 返回结果和列表推导式一样
+print(values)
+print("generator:", getsizeof(values)) # 生成器对象的大小
+# print(len(values))会报错，生成器对象没有长度
 
+# 解包运算符（在任何可迭代对象中取出项）
+numbers = [1, 2, 3]
+print(numbers) # 返回列表，如果只想返回数字print(1, 2, 3)
+print(1, 2, 3)
+print(*numbers) # *是解包运算符，打开容器取出它的各个元素，并将它们作为任意参数传递给print函数
+values = list(range(5))
+print(values)
+values = [*range(5), *"Hello"] # 解包运算符可以解包任何迭代，这里先解包range对象和字符串取出值，再把值放入list
+print(values)
+first = [1, 2]
+second = [3]
+values = [*first, "a", *second, *"Hello"] # 合并多个列表
+print(values)
+first = {"x": 1}
+second = {"x": 10, "y": 2}
+combined = {**first, **second, "z": 1} # 解包字典并合并多个字典
+print(combined) # 如果有多个相同的key，将使用最后一个值
 
+# exercise：假设有一些文字，写代码找出重复最多的字符
+sentence = "This is a common interview question"
+# 需要知道每个字符重复的次数，应该用什么样的数据结构？字典，字典是键值对的集合，字符作为键，重复次数作为值
+from pprint import pprint
+char_frequency = {}
+for char in sentence:
+    if char in char_frequency:
+        char_frequency[char] += 1
+    else:
+        char_frequency[char] = 1
+print(char_frequency)
+pprint(char_frequency, width=1) # width确定每行的字符数
+# 下一步是按字符的频率对字典进行排序，但字典是集合，集合是无序的，只能对列表进行排序，所以字典转换为列表，取出字典的项，再把它们放列表中进行排序
+# 字典.items()把键值对转换为元组
+char_frequency_sorted =  sorted(char_frequency.items(), key=lambda kv:kv[1], reverse=True) # 排序依据是元组的第二项，kv是形参
+print(char_frequency_sorted)
+print(char_frequency_sorted[0])
