@@ -1,4 +1,4 @@
-# 比较运算符
+# 比较运算符Comparison Operators
 # 数值
 print(10 >= 3) # 布尔表达式（产生布尔值的表达式）
 print(10 == 10)
@@ -11,7 +11,7 @@ print("bag" == "BAG")
 print(ord("b")) # 98，字母b的数字表示
 print(ord("B")) # 66，b的ASCII大于B，小写字母和大写字母具有不同的数字表示
 
-# 条件语句if语句
+# 条件语句Conditional Statements if语句
 # 分支结构
 # 单分支结构：if语句
 temperature = 35
@@ -31,7 +31,7 @@ else:
     print("It's cold")
 print("Done")
 
-# 三元运算符（根据条件给变量赋不同的值，即根据第三个值选择两个值中的一个）
+# 三元运算符Ternary Operator（根据条件给变量赋不同的值，即根据第三个值选择两个值中的一个）
 # 二分支&给变量赋值
 age = 22
 # if age >= 18:
@@ -41,7 +41,7 @@ age = 22
 message = "Eligible" if age >= 18 else "Not eligible" # 与上面四行代码等价，当给变量赋值时
 print(message)
 
-# and,or,not逻辑运算符（not > and > or）
+# and,or,not逻辑运算符Logical Operators（not > and > or）
 high_income = False
 good_credit = True
 student = True
@@ -66,13 +66,13 @@ if (high_income or good_credit) and not student: # 条件：收入高或信用�
 else:
     print("Not eligible")
 
-# 链式比较运算符
+# 链式比较运算符Chaining Comparison Operators
 age = 22
 if 18 <= age < 65: # 等价于if age >= 18 and age < 65:
     print("Eligible")
 
 # 循环结构
-# for循环（遍历循环，迭代可迭代的对象）
+# for循环For Loops（遍历循环，迭代可迭代的对象）
 # 可迭代对象：range、字符串、列表、自定义
 # 1、for语句
 for number in range(3): # number是循环变量，number分别是0、1、2，只有1个参数，从0开始到该参数前结束
@@ -91,7 +91,7 @@ for number in range(3):
         print("Successful")
         break
 
-# 3、for,else语句
+# 3、for,else循环
 successful = False
 for number in range(3):
     print("Attempt")
@@ -101,12 +101,12 @@ for number in range(3):
 else: # 这个else是for,else语句，不是if,else语句。如果for循环没有提前终止，else语句一定会执行，如果break了，else就不会执行
     print("Attempted 3 times and failed")
 
-# 4、嵌套循环
+# 4、嵌套循环Nested Loops
 for x in range(5): # 外循环
     for y in range(3): # 内循环
         print(f"({x}, {y})")
 
-# 5、可迭代对象
+# 5、可迭代对象Iterables
 print(type(5))
 print(type(range(5))) # range：数据的复杂类型之一，可迭代
 for x in range(3):
@@ -118,7 +118,7 @@ for x in [1, 2, 3, 4]: # 列表：数据的复杂类型之一，这里是数值�
 # for item in shopping_cart: # shopping_cart是创建的可迭代的自定义对象
 #     print(item)
 
-# while循环（无限循环，评估条件，重复任务）
+# while循环While Loops（无限循环，评估条件，重复任务）
 # 1、while语句
 number = 100
 while number > 0:
@@ -135,7 +135,7 @@ while command.lower() != "quit": # 只要输入quit无论大小写都会终止
     print("ECHO2", command)
 
 # 3、while&break
-# 无限循环（条件始终为真）及其终止（和上面代码等价）
+# 无限循环Infinite Loops（条件始终为真）及其终止（和上面代码等价）
 while True:
     command = input(">")
     print("ECHO3", command)
