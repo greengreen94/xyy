@@ -1,7 +1,7 @@
-# 变量（将数据存储在计算机内存中）
-# 数据的基本类型：数字、布尔值True/False和字符串（区分大小写）
+# 变量Variables（将数据存储在计算机内存中）
+# 数据的基本类型Primitive Types：数字、布尔值True/False和字符串（区分大小写）
 
-# 字符串
+# 字符串Strings
 course = "Python Programming"
 print(len(course)) # len()字符串的长度，不局限于字符串，长度18，空格也算
 # []访问字符串中的特定字符
@@ -13,12 +13,12 @@ print(course[:3])
 print(course[:])
 print(course[1:-1])
 
-# 转义序列
+# 转义序列Escape Sequences
 # \转义字符：\"表示"，\'表示'，\\表示\，\n表示换行
 course = "Python \n Programming"
 print(course)
 
-# 格式化字符串（常量）
+# 格式化字符串Formatted Strings（常量）
 first = "Hua"
 last = "Li"
 full = first + " " + last
@@ -28,7 +28,7 @@ print(full)
 full = f"{len(first)} {2 + 2}"
 print(full)
 
-# 字符串函数
+# 字符串函数/方法String Methods
 course = "Python Programming"
 # 点表示法访问函数
 print(course.upper()) # 全部大写
@@ -45,7 +45,7 @@ print(course.replace("py", "j")) # 替换
 print("pro" in course) # 查看字符串是否包含字符序列，返回布尔值
 print("green" not in course)
 
-# 数字（整数、浮点数、复数）
+# 数字Numbers（整数、浮点数、复数）
 x = 1
 x = 1.1
 x = 1 + 2j # a + bi
@@ -64,7 +64,7 @@ import math # math模块
 print(math.ceil(2.3)) # 向上取整
 print(math.floor(2.3)) # 向下取整
 
-# 类型转换函数
+# 类型转换Type Conversion函数
 # int(x) # 转换为整数
 # float(x) # 转换为浮点数
 # bool(x) # 转换为布尔值

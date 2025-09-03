@@ -76,7 +76,8 @@ except ValueError as error:
 
 # 引发异常的代价
 from timeit import timeit # 计算代码执行时间
-code1 = """
+# 引发异常的代价
+code1 = """ # 三引号创建多行字符串
 def calculate_xfactor(age):
     if age <= 0:
         raise ValueError("Age cannot be 0 or less.") # 该函数引发异常，当实参无效时
@@ -84,8 +85,17 @@ def calculate_xfactor(age):
 try: # 处理异常
     calculate_xfactor(-1)
 except ValueError as error:
-    print(error)
+    pass # 没有任何作用，用它是因为except块不能为空
 """
 print("first code=", timeit(code1, number=10000)) # 执行代码10000次的时间
-
-
+# 没有引发异常的代价
+code2 = """ 
+def calculate_xfactor(age):
+    if age <= 0: # 思考if语句是否能够替代引发异常，引发异常是否真的有必要
+        return None
+    return 10 / age
+xfactor = calculate_xfactor(-1)
+if xfactor == None:
+    pass
+"""
+print("second code=", timeit(code2, number=10000))
